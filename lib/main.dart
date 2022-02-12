@@ -5,7 +5,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  var infos = "Bienvenue level";
+  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    onPrimary: Colors.black87,
+    primary: Colors.grey[300],
+    minimumSize: Size(88, 36),
+    padding: EdgeInsets.symmetric(horizontal: 16),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2)),
+    ),
+  );
 
   // This widget is the root of your application.
   @override
@@ -15,14 +23,30 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text(infos),
-            ),
-            body: ElevatedButton(
-              style: ElevatedButton.styleFrom(onSurface: Colors.red),
-              onPressed: null,
-              child: Text('ElevatedButton with custom disabled colors'),
-            )));
+        home: level());
+  }
+}
+
+class level extends StatefulWidget {
+  const level({Key? key}) : super(key: key);
+
+  @override
+  _levelState createState() => _levelState();
+}
+
+class _levelState extends State<level> {
+  var infos = "Bienvenue level";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(infos),
+        ),
+        body: ElevatedButton(
+          onPressed: () {
+            print('validation ok');
+          },
+          child: Text('valider'),
+        ));
   }
 }
