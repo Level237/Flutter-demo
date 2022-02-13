@@ -21,32 +21,64 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
         ),
-        home: level());
+        home: Homepage());
   }
 }
 
-class level extends StatefulWidget {
-  const level({Key? key}) : super(key: key);
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
 
   @override
-  _levelState createState() => _levelState();
+  _HomepageState createState() => _HomepageState();
 }
 
-class _levelState extends State<level> {
-  var infos = "Bienvenue level";
+class _HomepageState extends State<Homepage> {
+  String value = "bienvenue chez level";
+  String value1 = "bienvenue chez Martin";
+
+  void onclick1() {
+    setState(() {
+      value = "tutoriels pour débutants";
+    });
+  }
+
+  void onclick2(String value2) {
+    setState(() {
+      value1 = value2;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(infos),
+          title: Text('Raised Button'),
         ),
-        body: ElevatedButton(
-          onPressed: () {
-            print('validation ok');
-          },
-          child: Text('valider'),
-        ));
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () => onclick1(),
+                child:
+                    Text('1 er bouton', style: TextStyle(color: Colors.green)),
+              ),
+              Text(
+                value,
+                style: TextStyle(color: Colors.black, fontSize: 40),
+              ),
+              Divider(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () => onclick2('bojour a tous'),
+                child: Text(value, style: TextStyle(color: Colors.green)),
+              ),
+              Text(
+                value1,
+                style: TextStyle(color: Colors.black, fontSize: 40),
+              )
+            ]));
   }
 }
