@@ -35,50 +35,24 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  String value = "bienvenue chez level";
-  String value1 = "bienvenue chez Martin";
-
-  void onclick1() {
-    setState(() {
-      value = "tutoriels pour débutants";
-    });
-  }
-
-  void onclick2(String value2) {
-    setState(() {
-      value1 = value2;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Raised Button'),
-        ),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () => onclick1(),
-                child:
-                    Text('1 er bouton', style: TextStyle(color: Colors.green)),
-              ),
-              Text(
-                value,
-                style: TextStyle(color: Colors.black, fontSize: 40),
-              ),
-              Divider(
-                height: 10,
-              ),
-              ElevatedButton(
-                onPressed: () => onclick2('bojour a tous'),
-                child: Text(value, style: TextStyle(color: Colors.green)),
-              ),
-              Text(
-                value1,
-                style: TextStyle(color: Colors.black, fontSize: 40),
-              )
-            ]));
+      appBar: AppBar(
+        title: Text('Raised Button'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          TextButton(
+            onPressed: () {},
+            child: const Text("click me"),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
